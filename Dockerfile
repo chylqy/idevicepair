@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install -y \
     libusb-1.0-0-dev \
     usbmuxd \
     libusbmuxd-dev \
-    libtatsu-dev \
     libssl-dev \
     autoconf \
     automake \
