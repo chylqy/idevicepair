@@ -28,7 +28,6 @@ RUN git clone https://github.com/libimobiledevice/libplist.git \
 # 构建并安装 libimobiledevice-glue
 RUN git clone https://github.com/libimobiledevice/libimobiledevice-glue.git \
     && cd libimobiledevice-glue \
-    && git checkout 2.0.1 \
     && ./autogen.sh --prefix=/usr/local \
     && make \
     && make install \
