@@ -11,6 +11,11 @@ RUN apt-get update && apt-get install -y \
     usbmuxd \
     libusbmuxd-dev \
     libssl-dev \
+    libtoolize \
+    aclocal \
+    autoheader \
+    automake \
+    autoconf \
     && rm -rf /var/lib/apt/lists/*
 
 # 编译安装 libimobiledevice
