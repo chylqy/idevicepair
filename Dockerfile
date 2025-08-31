@@ -33,6 +33,14 @@ RUN git clone https://github.com/libimobiledevice/libimobiledevice-glue.git \
     && make \
     && make install \
     && ldconfig
+    
+# 构建并安装 libtatsu
+RUN git clone https://github.com/libimobiledevice/libtatsu.git \
+    && cd libtatsu \
+    && ./autogen.sh --prefix=/usr/local \
+    && make \
+    && make install \
+    && ldconfig
 
 # 构建并安装 libimobiledevice (强制使用 /usr/local 的 libplist)
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib/x86_64-linux-gnu/pkgconfig
