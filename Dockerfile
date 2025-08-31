@@ -17,18 +17,19 @@ RUN apt-get update && apt-get install -y \
     cmake \
     && rm -rf /var/lib/apt/lists/*
 
-# 构建并安装 libplist
+# 构建并安装 libplist (安装到 /usr/local)
 RUN git clone https://github.com/libimobiledevice/libplist.git \
     && cd libplist \
-    && ./autogen.sh --prefix=/usr --without-cython \
+    && ./autogen.sh --prefix=/usr/local --without-cython \
     && make \
     && make install \
     && ldconfig
 
-# 构建并安装 libimobiledevice
+# 构建并安装 libimobiledevice (强制使用 /usr/local 的 libplist)
+ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib/x86_64-linux-gnu/pkgconfig
 RUN git clone https://github.com/libimobiledevice/libimobiledevice.git \
     && cd libimobiledevice \
-    && ./autogen.sh --prefix=/usr \
+    && ./autogen.sh --prefix=/usr/local \
     && make \
     && make install \
     && ldconfig
